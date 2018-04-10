@@ -9,22 +9,12 @@
 
     Preloader.prototype = {
         loadResources: function() {
-            // More detail in Phaser Docs - http://phaser.io/docs/2.6.2/Phaser.Loader.html
-            // To add a SpriteSheet to the loader use the following:
-            // this.load.spritesheet(key, url, frameWidth, frameHeight, frameMax, margin, spacing);
 
-            // Texture Atlas which the frames are usually variable in size 
-            // and come with a json or xml file that describes their structure. Sometimes a Texture Atlas
-            // Usually use tools such as TexturePacker and Shoebox to create
-            // To add Texture Atlas a the loader use the following:
-            // this.load.atlas(key, textureURL, atlasURL, atlasData, format);
-
-            // Video
-            // Wechat app can not support 'canplay' 'canplaythrough' 'loadstart' 'loadeddata' 'loadedmetadata'
-            // this.load.video(key, urls, loadEvent, asBlob);
-
-            // image
-            // this.load.image(key, url, overwrite);
+            for (var i = 1; i <= 26; i++) {
+                this.load.image('p' + i, '../assets/img/p' + i + '.png');
+            }
+            this.load.image('man', '../assets/img/man.png');
+            this.load.image('umbrella', '../assets/img/umbrella.png');
             this.load.start();
 
         },
