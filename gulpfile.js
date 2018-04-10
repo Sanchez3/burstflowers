@@ -28,13 +28,9 @@ paths = {
     css: ['src/assets/css/*.css'],
     libs: {
         js: [
-            'node_modules/howler/dist/howler.min.js',
             'node_modules/phaser/build/phaser.min.js',
-            'node_modules/swiper/dist/js/swiper.min.js'
         ],
         css: [
-            'node_modules/animate.css/animate.min.css',
-            'node_modules/swiper/dist/css/swiper.min.css'
         ]
     },
     js: ['src/assets/js/*.js', 'src/assets/js/**/*.js'],
@@ -78,25 +74,6 @@ gulp.task('concatlibs', ['clean'], function(cb) {
 });
 
 gulp.task('compile', ['clean'], function(cb) {
-    // var bundler = browserify({
-    //     cache: {},
-    //     packageCache: {},
-    //     fullPaths: true,
-    //     entries: [paths.entry],
-    //     debug: watching
-    // });
-    // var bundlee = function() {
-    //     bundler.bundle(),
-    //         source('main.min.js'),
-    //         jshint('.jshintrc'),
-    //         jshint.reporter('default'),
-    //         gulpif(!watching, streamify(uglify())),
-    //         gulp.dest(paths.distjs)
-    // };
-    // if (watching) {
-    //     bundler = watchify(bundler);
-    //     bundler.on('update', bundlee);
-    // }
     pump([
         browserify({
             cache: {},
