@@ -9,7 +9,6 @@
     State1.prototype = {
         preload: function() {},
         create: function() {
-            // this.game.world.setBounds(0, 0, 750, 1206);
             var parray = [];
             for (var i = 1; i <= 26; i++) {
                 parray.push('p' + i);
@@ -112,7 +111,7 @@
 
                 this.man_emitter.setXSpeed(0, 0);
                 this.man_emitter.setYSpeed(0, 0);
-                // man_emitter.alpha = 0;
+                this.man_emitter.alpha = 0;
 
                 this.firstP = false;
                 countTime = 0;
