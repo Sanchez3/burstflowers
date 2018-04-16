@@ -14,7 +14,7 @@
             for (var i = 1; i <= 26; i++) {
                 parray.push('p' + i);
             }
-            var man_emitter = this.add.emitter(this.game.world.centerX -10, this.game.world.centerY+250, 200);
+            var man_emitter = this.add.emitter(this.game.world.centerX - 10, this.game.world.centerY + 250, 200);
             man_emitter.makeParticles(parray);
             man_emitter.gravity = 0;
             man_emitter.setAlpha(0.7, 1, 0);
@@ -28,11 +28,11 @@
             man_emitter.setAlpha(1, 0, 9000, Phaser.Easing.Quartic.In);
 
 
-            this.m = this.add.sprite(this.game.world.centerX, this.game.world.centerY+200, 'man');
+            this.m = this.add.sprite(this.game.world.centerX, this.game.world.centerY + 200, 'man');
             this.m.anchor.setTo(0.5);
             this.m.scale.setTo(0.25);
 
-            var top_emitter = this.add.emitter(this.game.world.centerX,this.game.world.centerY-180, 200);
+            var top_emitter = this.add.emitter(this.game.world.centerX, this.game.world.centerY - 180, 200);
             top_emitter.makeParticles(parray);
             top_emitter.setAlpha(0.5, 0, 10000, Phaser.Easing.Quartic.In);
             top_emitter.gravity = -10;
@@ -44,7 +44,7 @@
             top_emitter.setYSpeed(-100, 0);
 
 
-            var bottom_emitter = this.add.emitter(this.game.world.centerX, this.game.world.centerY-180, 1000);
+            var bottom_emitter = this.add.emitter(this.game.world.centerX, this.game.world.centerY - 180, 1000);
             bottom_emitter.makeParticles(parray);
             bottom_emitter.width = 170;
             bottom_emitter.bringToTop = true;
@@ -70,15 +70,20 @@
             this.man_emitter = man_emitter;
 
             this.firstP = false;
-            this.u = this.add.sprite(this.game.world.centerX,this.game.world.centerY-100, 'umbrella');
+            this.u = this.add.sprite(this.game.world.centerX, this.game.world.centerY - 100, 'umbrella');
             this.u.anchor.setTo(0.5);
             this.u.scale.setTo(0.25);
-
-
-
-            // u.alpha=0;
-
-            // this.inithammer();
+            var hand = this.add.image(this.game.world.centerX, this.game.world.centerY + 150, 'hand');
+            hand.anchor.setTo(0.5);
+            TweenMax.to(hand.scale, 0.8, {
+                x: [0.8, 0.8, 0.8, 1, 1],
+                y: [0.8, 0.8, 0.8, 1, 1],
+                repeat: 5,
+                yoyo: true,
+                onComplete: function() {
+                    TweenMax.to(hand, 0.3, { alpha: 0 })
+                }
+            })
         },
         update: function() {
             var that = this;
@@ -88,23 +93,10 @@
                 this.firstP = true;
                 this.top_emitter.maxParticleScale = 1.2;
                 this.bottom_emitter.maxParticleScale = 1.3;
-                if (countTime > 400 && this.bottom_emitter.frequency < 210) {
-                    console.log('!!!!!!');
 
-                    TweenMax.to([this.bottom_emitter, this.top_emitter, this.man_emitter, this.m, this.u], 0.6, {
-                        alpha: 0,
-                        onComplete: function() {
-                            that.bottom_emitter.destroy();
-                            that.top_emitter.destroy();
-                            that.man_emitter.destroy();
-                        }
-                    })
-                } else {
-                    this.man_emitter.alpha = 1;
-                    this.man_emitter.setXSpeed(-300, 300);
-                    this.man_emitter.setYSpeed(-300, 300);
-                }
-
+                this.man_emitter.alpha = 1;
+                this.man_emitter.setXSpeed(-300, 300);
+                this.man_emitter.setYSpeed(-300, 300);
 
                 if (this.bottom_emitter.frequency > 200) {
                     if (this.bottom_emitter.gravity < 100) {
@@ -136,11 +128,7 @@
 
                     }
                 });
-                // this.emitter.gravity++;
             }
-
-            // this.mouse.x = this.game.input.activePointer.position.x;
-            // console.log(this.mouse.x, this.mouse.y)
 
         }
     };
