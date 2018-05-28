@@ -14,7 +14,7 @@
             for (var i = 1; i <= 26; i++) {
                 parray.push('p' + i);
             }
-            var man_emitter = this.add.emitter(this.game.world.centerX - 10, this.game.world.centerY + 250, 200);
+            var man_emitter = this.add.emitter(this.game.world.centerX - 20, this.game.world.centerY + 250, 200);
             man_emitter.makeParticles(parray);
             man_emitter.gravity = 0;
             man_emitter.setAlpha(0.7, 1, 0);
@@ -28,7 +28,7 @@
             man_emitter.setAlpha(1, 0, 9000, Phaser.Easing.Quartic.In);
 
             //  Texture must be power-of-two sized or the filter will break
-            this.m = this.add.sprite(0,0,'man@2048');
+            this.m = this.add.sprite(0,0,'man@1024');
              // this.m.anchor.setTo(0.5);
             // this.m.width=this.game.world.width;
             // this.m.height=this.game.world.height;
@@ -88,7 +88,7 @@
                 iChannel0: { type: 'sampler2D', value: this.m.texture, textureData: { repeat: true } }
             };
             this.mfilter = new Phaser.Filter(this.game, customUniforms, fragmentSrc1);
-            this.mfilter.setResolution(2048, 2048);
+            this.mfilter.setResolution(1024, 1024);
            // this.mfilter.addToWorld(this.game.world.centerX,this.game.world.centerY,2048,2048,0.5,0.5)
             this.m.filters = [this.mfilter];
 

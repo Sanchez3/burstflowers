@@ -3,8 +3,8 @@
  */
 'use strict';
 var config={
-    'width':2048,
-    'height':2048,
+    'width':1024,
+    'height':1024,
     'render':Phaser.AUTO,
     'parent':'canvas-wrapper',
     'transparent':true
