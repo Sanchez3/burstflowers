@@ -15,6 +15,7 @@
             }
             this.load.image('hand', '../assets/img/hand.png');
             this.load.image('man', '../assets/img/man.png');
+            this.load.image('man@2048', '../assets/img/man@2048.png');
             this.load.image('umbrella', '../assets/img/umbrella.png');
             this.load.start();
 

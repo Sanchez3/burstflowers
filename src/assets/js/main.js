@@ -3,11 +3,10 @@
  */
 'use strict';
 var config={
-    'width':'100',
-    'height':'100',
+    'width':2048,
+    'height':2048,
     'render':Phaser.AUTO,
     'parent':'canvas-wrapper',
-    'resolution':window.devicePixelRatio,
     'transparent':true
 }
 window.game = new Phaser.Game(config);

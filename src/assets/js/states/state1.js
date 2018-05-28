@@ -7,8 +7,9 @@
     module.exports = State1;
     var countTime = 0;
     State1.prototype = {
-        preload: function() {},
         create: function() {
+
+
             var parray = [];
             for (var i = 1; i <= 26; i++) {
                 parray.push('p' + i);
@@ -26,10 +27,70 @@
             man_emitter.flow(15000, 1500, 4, -1);
             man_emitter.setAlpha(1, 0, 9000, Phaser.Easing.Quartic.In);
 
+            //  Texture must be power-of-two sized or the filter will break
+            this.m = this.add.sprite(0,0,'man@2048');
+             // this.m.anchor.setTo(0.5);
+            // this.m.width=this.game.world.width;
+            // this.m.height=this.game.world.height;
+            // this.m.scale.setTo(0.23);
+            var fragmentSrc1 = [
 
-            this.m = this.add.sprite(this.game.world.centerX, this.game.world.centerY + 200, 'man');
-            this.m.anchor.setTo(0.5);
-            this.m.scale.setTo(0.25);
+                "precision mediump float;",
+
+                "uniform float     time;",
+                "uniform vec2      resolution;",
+                "uniform sampler2D iChannel0;",
+
+                "void main( void ) {",
+
+                "vec2 uv = gl_FragCoord.xy / resolution.xy;",
+
+                "// Flip-a-roo.",
+                "uv.y *= -1.0;",
+
+                "// Represents the v/y coord(0 to 1) that will not sway.",
+                "float fixedBasePosY = 0.0;",
+
+                "// Configs for you to get the sway just right.",
+                "float speed = 2.0;",
+                "float verticleDensity = 3.0;",
+                "float swayIntensity = 0.02;",
+
+                "// Putting it all together.",
+                "float offsetX = sin(uv.y * verticleDensity + time * speed) * swayIntensity;",
+
+                "// Offsettin the u/x coord.",
+                "uv.x += offsetX * (uv.y - fixedBasePosY);",
+
+                "gl_FragColor = texture2D(iChannel0, uv);",
+
+                "}"
+            ];
+            var fragmentSrc2 = [
+
+                "precision mediump float;",
+
+                "uniform float     time;",
+                "uniform vec2      resolution;",
+                "uniform sampler2D iChannel0;",
+
+                "void main( void ) {",
+
+                "vec2 uv = gl_FragCoord.xy / resolution.xy;",
+                "uv.y *= -1.0;",
+                "uv.y += (sin((uv.x + (time * 0.5)) * 1.0) * 0.1) + (sin((uv.x + (time * 0.2)) * 1.0) * 0.01);",
+                "vec4 texColor = texture2D(iChannel0, uv);",
+                "gl_FragColor = texColor;",
+
+                "}"
+            ];
+            var customUniforms = {
+                iChannel0: { type: 'sampler2D', value: this.m.texture, textureData: { repeat: true } }
+            };
+            this.mfilter = new Phaser.Filter(this.game, customUniforms, fragmentSrc1);
+            this.mfilter.setResolution(2048, 2048);
+           // this.mfilter.addToWorld(this.game.world.centerX,this.game.world.centerY,2048,2048,0.5,0.5)
+            this.m.filters = [this.mfilter];
 
             var top_emitter = this.add.emitter(this.game.world.centerX, this.game.world.centerY - 180, 200);
             top_emitter.makeParticles(parray);
@@ -72,6 +133,7 @@
             this.u = this.add.sprite(this.game.world.centerX, this.game.world.centerY - 100, 'umbrella');
             this.u.anchor.setTo(0.5);
             this.u.scale.setTo(0.25);
+
             var hand = this.add.image(this.game.world.centerX, this.game.world.centerY + 150, 'hand');
             hand.anchor.setTo(0.5);
             TweenMax.to(hand.scale, 0.8, {
@@ -86,6 +148,7 @@
         },
         update: function() {
             var that = this;
+            that.mfilter.update();
 
             if (this.game.input.activePointer.isDown) {
                 countTime++;
