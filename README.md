@@ -17,6 +17,10 @@
 
 使用[phaser.js](http://phaser.io/)的滤镜效果，即 `Filter`
 
+> Note: Texture must be power-of-two sized or the filter will break !
+
+参考： [Sinewave Fixed Base](http://phaser.io/examples/v2/filters/sinewave-fixed-base)
+
 
 
 使用gulp自动化构建工具，使用方法见https://github.com/Sanchez3/generator-phaser-h5#installation
