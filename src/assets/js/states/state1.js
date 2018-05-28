@@ -174,7 +174,8 @@
 
                 this.man_emitter.setXSpeed(0, 0);
                 this.man_emitter.setYSpeed(0, 0);
-                this.man_emitter.alpha = 0;
+                // this.man_emitter.alpha = 0;
+                // TweenMax.to(this.man_emitter,0.3,{alpha:0});
 
                 this.firstP = false;
                 countTime = 0;
