@@ -15,7 +15,7 @@
 
 ###  滤镜 Filter
 
-使用[phaser.js](http://phaser.io/)的滤镜效果，即 `Filter`
+使用[phaser.js](http://phaser.io/)的滤镜效果，即 `Filter` [Class: Filter](https://photonstorm.github.io/phaser-ce/Phaser.Filter.html)
 
 > Note: Texture must be power-of-two sized or the filter will break !
 
