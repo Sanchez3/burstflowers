@@ -3,3 +3,5 @@
 node_modules/
 Package-lock.json
 dist/
+*.psd
+*.ai
