@@ -28,11 +28,10 @@
             man_emitter.setAlpha(1, 0, 9000, Phaser.Easing.Quartic.In);
 
             //  Texture must be power-of-two sized or the filter will break
-            this.m = this.add.sprite(0,0,'man@1024');
-             // this.m.anchor.setTo(0.5);
-            // this.m.width=this.game.world.width;
-            // this.m.height=this.game.world.height;
-            // this.m.scale.setTo(0.23);
+            this.m = this.add.sprite(this.game.world.centerX, this.game.world.centerY + 200, 'man');
+            this.m.anchor.setTo(0.5);
+            this.m.scale.setTo(0.25);
+            
             var fragmentSrc1 = [
 
                 "precision mediump float;",
@@ -89,8 +88,8 @@
             };
             this.mfilter = new Phaser.Filter(this.game, customUniforms, fragmentSrc1);
             this.mfilter.setResolution(1024, 1024);
-           // this.mfilter.addToWorld(this.game.world.centerX,this.game.world.centerY,2048,2048,0.5,0.5)
-            this.m.filters = [this.mfilter];
+            // this.mfilter.addToWorld(this.game.world.centerX,this.game.world.centerY,2048,2048,0.5,0.5)
+            // this.m.filters = [this.mfilter];
 
             var top_emitter = this.add.emitter(this.game.world.centerX, this.game.world.centerY - 180, 200);
             top_emitter.makeParticles(parray);
@@ -148,7 +147,7 @@
         },
         update: function() {
             var that = this;
-            that.mfilter.update();
+            // that.mfilter.update();
 
             if (this.game.input.activePointer.isDown) {
                 countTime++;
