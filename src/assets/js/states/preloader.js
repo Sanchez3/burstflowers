@@ -15,6 +15,7 @@
             }
             this.load.image('hand', '../assets/img/hand.png');
             this.load.image('man', '../assets/img/man.png');
+            this.load.image('flowers', '../assets/img/flowers@1024.png');
             this.load.image('umbrella', '../assets/img/umbrella.png');
             this.load.start();
 

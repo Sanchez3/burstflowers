@@ -9,6 +9,9 @@
     State1.prototype = {
         create: function() {
 
+            //  Texture must be power-of-two sized or the filter will break
+
+
 
             var parray = [];
             for (var i = 1; i <= 26; i++) {
@@ -27,11 +30,11 @@
             man_emitter.flow(15000, 1500, 4, -1);
             man_emitter.setAlpha(1, 0, 9000, Phaser.Easing.Quartic.In);
 
-            //  Texture must be power-of-two sized or the filter will break
             this.m = this.add.sprite(this.game.world.centerX, this.game.world.centerY + 200, 'man');
             this.m.anchor.setTo(0.5);
             this.m.scale.setTo(0.25);
-            
+
+            var flowers = this.add.sprite(0, 0, 'flowers');
             var fragmentSrc1 = [
 
                 "precision mediump float;",
@@ -65,31 +68,14 @@
 
                 "}"
             ];
-            var fragmentSrc2 = [
-
-                "precision mediump float;",
-
-                "uniform float     time;",
-                "uniform vec2      resolution;",
-                "uniform sampler2D iChannel0;",
-
-                "void main( void ) {",
-
-                "vec2 uv = gl_FragCoord.xy / resolution.xy;",
-                "uv.y *= -1.0;",
-                "uv.y += (sin((uv.x + (time * 0.5)) * 1.0) * 0.1) + (sin((uv.x + (time * 0.2)) * 1.0) * 0.01);",
-                "vec4 texColor = texture2D(iChannel0, uv);",
-                "gl_FragColor = texColor;",
-
-                "}"
-            ];
             var customUniforms = {
-                iChannel0: { type: 'sampler2D', value: this.m.texture, textureData: { repeat: true } }
+                iChannel0: { type: 'sampler2D', value: flowers.texture, textureData: { repeat: true } }
             };
             this.mfilter = new Phaser.Filter(this.game, customUniforms, fragmentSrc1);
             this.mfilter.setResolution(1024, 1024);
             // this.mfilter.addToWorld(this.game.world.centerX,this.game.world.centerY,2048,2048,0.5,0.5)
-            // this.m.filters = [this.mfilter];
+            flowers.filters = [this.mfilter];
+
 
             var top_emitter = this.add.emitter(this.game.world.centerX, this.game.world.centerY - 180, 200);
             top_emitter.makeParticles(parray);
@@ -131,7 +117,7 @@
             this.firstP = false;
             this.u = this.add.sprite(this.game.world.centerX, this.game.world.centerY - 100, 'umbrella');
             this.u.anchor.setTo(0.5);
-            this.u.scale.setTo(0.25);
+            this.u.scale.setTo(0.24);
 
             var hand = this.add.image(this.game.world.centerX, this.game.world.centerY + 150, 'hand');
             hand.anchor.setTo(0.5);
@@ -147,7 +133,7 @@
         },
         update: function() {
             var that = this;
-            // that.mfilter.update();
+            that.mfilter.update();
 
             if (this.game.input.activePointer.isDown) {
                 countTime++;
