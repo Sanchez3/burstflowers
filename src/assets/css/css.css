@@ -10,6 +10,11 @@ body {
     font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei";
 }
 
+#canvas-wrapper{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
 /*canvas {
   display: block;
   cursor: none;
