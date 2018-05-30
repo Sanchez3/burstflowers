@@ -32,7 +32,7 @@
 
             this.m = this.add.sprite(this.game.world.centerX, this.game.world.centerY + 200, 'man');
             this.m.anchor.setTo(0.5);
-            this.m.scale.setTo(0.25);
+            // this.m.scale.setTo(0.25);
 
             var flowers = this.add.sprite(0, 0, 'flowers');
             var fragmentSrc1 = [
@@ -117,7 +117,7 @@
             this.firstP = false;
             this.u = this.add.sprite(this.game.world.centerX, this.game.world.centerY - 100, 'umbrella');
             this.u.anchor.setTo(0.5);
-            this.u.scale.setTo(0.24);
+            // this.u.scale.setTo(0.24);
 
             var hand = this.add.image(this.game.world.centerX, this.game.world.centerY + 150, 'hand');
             hand.anchor.setTo(0.5);
