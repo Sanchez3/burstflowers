@@ -1,9 +1,13 @@
 # burstflowers
 
-[春分项目](https://github.com/Sanchez3/MyProject/tree/master/Tm24)  游戏demo
+[CodePen](https://codepen.io/sanchez3/full/MXWNwj/)
 
-效果如下gif图
+[春分项目](https://github.com/Sanchez3/MyProject/tree/master/Tm24)
+
+主KV图效果如下
 ![burstflowers](https://github.com/Sanchez3/burstflowers/blob/master/burstflowers.gif)
+
+
 
 ## 技术点
 
