@@ -32,7 +32,6 @@
 
             this.m = this.add.sprite(this.game.world.centerX, this.game.world.centerY + 200, 'man');
             this.m.anchor.setTo(0.5);
-            // this.m.scale.setTo(0.25);
 
             var flowers = this.add.sprite(0, 0, 'flowers');
             var fragmentSrc1 = [
@@ -117,17 +116,17 @@
             this.firstP = false;
             this.u = this.add.sprite(this.game.world.centerX, this.game.world.centerY - 100, 'umbrella');
             this.u.anchor.setTo(0.5);
-            // this.u.scale.setTo(0.24);
 
             var hand = this.add.image(this.game.world.centerX, this.game.world.centerY + 150, 'hand');
             hand.anchor.setTo(0.5);
             TweenMax.to(hand.scale, 0.8, {
-                x: [0.8, 0.8, 0.8, 1, 1],
-                y: [0.8, 0.8, 0.8, 1, 1],
+                x: 0.9,
+                y: 0.9,
                 repeat: 5,
                 yoyo: true,
+                yoyoEase:Power2.easeIn,
                 onComplete: function() {
-                    TweenMax.to(hand, 0.3, { alpha: 0 })
+                    // TweenMax.to(hand, 0.3, { alpha: 0 })
                 }
             })
         },
