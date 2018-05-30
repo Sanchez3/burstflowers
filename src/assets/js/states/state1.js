@@ -15,10 +15,10 @@
 
             var parray = [];
             for (var i = 1; i <= 26; i++) {
-                parray.push('p' + i);
+                parray.push('p' + i+'.png');
             }
             var man_emitter = this.add.emitter(this.game.world.centerX - 20, this.game.world.centerY + 250, 200);
-            man_emitter.makeParticles(parray);
+            man_emitter.makeParticles('p_sprites',parray);
             man_emitter.gravity = 0;
             man_emitter.setAlpha(0.7, 1, 0);
             man_emitter.maxParticleScale = 1;
@@ -78,7 +78,7 @@
 
 
             var top_emitter = this.add.emitter(this.game.world.centerX, this.game.world.centerY - 180, 200);
-            top_emitter.makeParticles(parray);
+            top_emitter.makeParticles('p_sprites',parray);
             top_emitter.setAlpha(0.5, 0, 10000, Phaser.Easing.Quartic.In);
             top_emitter.gravity = -10;
             top_emitter.maxParticleScale = 0.8;
@@ -90,7 +90,7 @@
 
 
             var bottom_emitter = this.add.emitter(this.game.world.centerX, this.game.world.centerY - 180, 1000);
-            bottom_emitter.makeParticles(parray);
+            bottom_emitter.makeParticles('p_sprites',parray);
             bottom_emitter.width = 170;
             bottom_emitter.bringToTop = true;
             bottom_emitter.maxParticleScale = 1.1;

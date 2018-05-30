@@ -27,7 +27,6 @@
         },
 
         create: function() {
-            var that = this;
             // configure game
             this.game.input.maxPointers = 1;
             this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;

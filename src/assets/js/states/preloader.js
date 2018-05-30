@@ -10,13 +10,15 @@
     Preloader.prototype = {
         loadResources: function() {
 
-            for (var i = 1; i <= 26; i++) {
-                this.load.image('p' + i, '../assets/img/p' + i + '.png');
-            }
+            // for (var i = 1; i <= 26; i++) {
+            //     this.load.image('p' + i, '../assets/img/p' + i + '.png');
+            // }
             this.load.image('hand', '../assets/img/hand.png');
             this.load.image('man', '../assets/img/man.png');
             this.load.image('flowers', '../assets/img/flowers@1024.png');
             this.load.image('umbrella', '../assets/img/umbrella.png');
+
+            this.load.atlasJSONHash('p_sprites', '../assets/img/p_sprites.png','../assets/img/p_sprites.json');
             this.load.start();
 
         },
