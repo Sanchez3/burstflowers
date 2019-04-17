@@ -36,6 +36,7 @@
     },
     "dependencies": {
         "gsap": "^1.20.3",
+        "natives": "^1.1.6",
         "phaser": "^2.6.2"
     },
     "scripts": {
