@@ -57,3 +57,5 @@ npm-debug.log
 .publish
 package-lock.json
 
+*.psd
+*.ai
